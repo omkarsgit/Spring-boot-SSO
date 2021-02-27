@@ -60,7 +60,7 @@ public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 	@GetMapping(value="/error", produces = MediaType.TEXT_HTML_VALUE)
 	@ResponseBody 
 	public String welcomeAsHTML() {
-		return "<h1>Hello World</h1>";
+		return "<h1>Error while requesting webpage.</h1>";
 	}
 	
 	
