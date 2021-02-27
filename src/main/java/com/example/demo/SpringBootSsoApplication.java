@@ -18,10 +18,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
+//Passing OAuth2User object and returning user attributes stored in a Map.
+
 @SpringBootApplication
 @EnableOAuth2Sso
 @RestController
-
 public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 	
 	@GetMapping("/user")
@@ -37,6 +38,7 @@ public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 			
 	}
 	
+	//Routing user requests to different pages. If there is an error, it will redirect to error page. 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests(a->a
