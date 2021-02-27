@@ -46,6 +46,8 @@
 			</exclusions>
 		</dependency>
 	</dependencies>
+	
+	
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
