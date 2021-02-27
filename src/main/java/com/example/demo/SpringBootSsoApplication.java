@@ -39,14 +39,20 @@ public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 			
 	}
 	
+	@GetMapping("/login")
+	
+	
 	//Routing user requests to different pages. If there is an error, it will redirect to error page. 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception{
 		http.authorizeRequests(a->a
-				.antMatchers("/","/errors").permitAll().anyRequest().authenticated())
+				.antMatchers("/").permitAll().anyRequest().authenticated())
 		.exceptionHandling(e->e
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 				).oauth2Login();
+		//http.authorizeRequests(a->a.loginPage());
+			
+		;
 		
 	}
 	

@@ -8,7 +8,6 @@ spring:
             clientSecret: ${GITHUB_CLIENTSECRET}
             
 server:
-  port: 8080
   tomcat:
     use-relative-redirects: true
         
