@@ -21,6 +21,8 @@
 	<h4>Your profile information: </h4>
 	Username: <span id="login"></span>
 	<br />
+  Profile Picture: <img id="profile">
+  <br />
 	Number of Public Repositorys: <span id=public_repos></span>
 	<br />
 	Number of Private Repositorys: <span id="total_private_repos"></span>
@@ -38,6 +40,7 @@
         $("#login").html(data.login);
         $("#location").html(data.location);
         $("#user").html(data.name);
+        $("#profile").attr('src', data.avatar_url);
         $("#public_repos").html(data.public_repos);
         $("#total_private_repos").html(data.total_private_repos);
         $("#collaborators").html(data.collaborators);
