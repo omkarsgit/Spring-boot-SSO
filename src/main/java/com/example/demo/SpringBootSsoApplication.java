@@ -48,9 +48,6 @@ public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 				).oauth2Login();
 		
-		http.requiresChannel()
-	      .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
-	      .requiresSecure();
 	}
 	
 	public static void main(String[] args) {
