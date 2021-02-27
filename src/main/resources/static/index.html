@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <title>Demo</title>
+    <meta name="description" content=""/>
+    <meta name="viewport" content="width=device-width"/>
+    <base href="/"/>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.0.min.js"></script>
+</head>
+<body>
+	<h1>Github SSO App</h1>
+	<h5>Login using Github Account</h5>
+	<div class="unauthenticated">
+    <a href="/oauth2/authorization/github" class="btn btn-dark" role="button" aria-pressed="true">Login</a>
+</div>
+<div class="authenticated" style="display:none">
+	<h3>Welcome, <span id="user"></span></h1>
+	<h4>Your profile information: </h4>
+	Username: <span id="login"></span>
+	<br />
+	Number of Public Repositorys: <span id=public_repos></span>
+	<br />
+	Number of Private Repositorys: <span id="total_private_repos"></span>
+	<br />
+	Number of Collaborators: <span id="collaborators"></span>
+	<br />
+	Location: <span id="location"></span>
+    
+</div>
+</body>
+<script type="text/javascript">
+	
+	//Getting data from the endpoint
+    $.get("/user", function(data) {
+        $("#login").html(data.login);
+        $("#location").html(data.location);
+        $("#user").html(data.name);
+        $("#public_repos").html(data.public_repos);
+        $("#total_private_repos").html(data.total_private_repos);
+        $("#collaborators").html(data.collaborators);
+        $(".unauthenticated").hide()
+        $(".authenticated").show()
+    });
+    
+    
+</script>
+</html>
