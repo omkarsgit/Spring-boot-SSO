@@ -15,6 +15,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.core.user.OAuth2User;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 
@@ -46,6 +47,10 @@ public class SpringBootSsoApplication extends WebSecurityConfigurerAdapter{
 		.exceptionHandling(e->e
 				.authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED))
 				).oauth2Login();
+		
+		http.requiresChannel()
+	      .requestMatchers(r -> r.getHeader("X-Forwarded-Proto") != null)
+	      .requiresSecure();
 	}
 	
 	public static void main(String[] args) {
